@@ -15,16 +15,16 @@ int main() {
     int size, number;
     printf("quel est la taille");
     do{ scanf("%f", &size);
-       if (size<0 && size%10 !=0){
+       if (size<0 && size%1 !=0){
            printf("donnez une valeur qui marche");}
-      }while(size<0 && size%10 != 0); 
+      }while(size<0 && size%1 != 0); 
     printf("Combien d'élément différent voulez-vous?");
     do{scanf("%f", &number);
-       if (number<0 && number%10 !=0){
+       if (number<0 && number%1 !=0){
            printf("donnez une valeur qui marche");}
        if (number<4 || number>6){
            printf("donnez une valeur qui marche");}
-      }while(number<4 && number%10 !=0 && number>6);
+      }while(number<4 && number%1 !=0 && number>6);
     
     
     int tableau[size][size];
