@@ -22,6 +22,8 @@ int main() {
     do{scanf("%f", &number);
        if (number<0 && number%10 !=0){
            printf("donnez une valeur qui marche");}
+       if (number<4 || number>6){
+           printf("donnez une valeur qui marche");}
       }while(number<0 && number%10 !=0);
     
     
