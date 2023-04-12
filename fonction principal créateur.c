@@ -2,6 +2,12 @@
 #include <stdlib.h>
 #include <time.h>
 
+
+struct point {
+    float longueur;
+    float largeur;
+};
+
 void create_tableau(int tab[size][size],number) {
     srand(time(NULL)); 
     for (int i = 0; i < size; i++) {
@@ -12,6 +18,8 @@ void create_tableau(int tab[size][size],number) {
 }
 
 int main() {
+    struct point p; 
+    struct point c; 
     int size, number;
     printf("quel est la taille");
     do{ scanf("%f", &size);
