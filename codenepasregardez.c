@@ -297,29 +297,29 @@ void create_tableau(int tab[size][size], int taille, int number) {
 
 int main() {
   struct point p;
-
-  float a, b;
-  int r;
-  printf("quel est la taille");
-  do {
-    scanf("%f", &a);
-    if (a < 0) {
-      printf("donnez une valeur qui marche");
-    }
-  } while (a < 0);
-  printf("Combien d'élément différent voulez-vous?");
-  scanf("%f", &b);
-  if (b < 4 || b > 6) {
+      float a, b;
+    int r;
+    char input[100];
+    
+    printf("Quelle est la taille ? ");
     do {
-      printf("donnez une valeur qui marche");
-      scanf("%f", &b);
+        fgets(input, sizeof(input), stdin);
+        if (sscanf(input, "%f", &a) != 1 || a < 0) {
+            printf("Donnez une valeur qui marche suppérieur à 4 : ");
+        }
+    } while (a < 4);
+    
+    printf("Combien d'éléments différents voulez-vous ? ");
+    do {
+        fgets(input, sizeof(input), stdin);
+        if (sscanf(input, "%f", &b) != 1 || b < 4 || b > 6) {
+            printf("Donnez une valeur qui marche : ");
+        }
     } while (b < 4 || b > 6);
-  }
-  //int size, 
-int number;
- // size = a;
-  number = b;
-
+    
+    int size, number;
+    size = a;
+    number = b;
   //int *tab = (int *)malloc(size * sizeof(int));
 int tab[size][size];
   do {
