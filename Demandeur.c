@@ -1,5 +1,5 @@
 
-void demandeur(struct point *p, struct point *c, size_t size) {
+void demandeur(struct point *p, struct point *c, size) {
     do {
         printf("Quelles sont les coordonnées du point en longueur ? ");
         scanf("%f", &(p->longueur));
