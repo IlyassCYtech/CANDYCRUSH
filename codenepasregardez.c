@@ -259,7 +259,8 @@ void demandeur(struct point *p, int bonjour) {
 void inverse(int tab[size][size], int taille, struct point *p) {
   int r = 0;
   int h = 0;
-  int *tab1 = (int *)malloc(taille * sizeof(int));
+  //int *tab1 = (int *)malloc(taille * sizeof(int));
+int tab1[size][size];
 
   do {
     for (int i = 0; i < taille; i++) {
@@ -268,12 +269,12 @@ void inverse(int tab[size][size], int taille, struct point *p) {
       }
     }
 
-    demandeur(&p, taille);
+    demandeur(p, taille);
     int temp = tab1[p->longueur][p->largeur];
     tab1[p->longueur][p->largeur] = tab1[p->longueur2][p->largeur2];
     tab1[p->longueur2][p->largeur2] = temp;
 
-    r = premier_vérificateur(&tab1, taille);
+    r = premier_vérificateur(tab1, taille);
     if (r == 1) {
       for (int i = 0; i < taille; i++) {
         for (int j = 0; j < taille; j++) {
