@@ -1,340 +1,253 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 
-int premier_vérificateur(int *tab[][], int taille) {
-  int valeur = 0;
+#include <stdbool.h>
 
-  for (int i = 0; i < taille; i++) {
-    for (int j = 0; j < taille - 2; j++) {
-      if (tab[i][j] == tab[i][j + 1] && tab[i][j] == tab[i][j + 2]) {
-        valeur = 1;
-      }
-    }
-  }
+#define MAX_SIZE 15
+#define MIN_SIZE 4
+#define MAX_ELEMENTS 6
+#define MIN_ELEMENTS 4
 
-  for (int j = 0; j < taille; j++) {
-    for (int i = 0; i < taille - 2; i++) {
-      if (tab[i][j] == tab[i + 1][j] && tab[i][j] == tab[i + 2][j]) {
-        valeur = 1;
-      }
-    }
-  }
+#define RESET "\033[0m"    // Réinitialiser la couleur
+#define RED "\033[31m"     // Rouge
+#define GREEN "\033[32m"   // Vert
+#define YELLOW "\033[33m"  // Jaune
+#define BLUE "\033[34m"    // Bleu
+#define MAGENTA "\033[35m" // Magenta
+#define CYAN "\033[36m"    // Cyan
 
-  return valeur;
-}
-
-struct point {
-  int longueur;
-  int largeur;
-  int longueur2;
-  int largeur2;
+struct point
+{
+    int longueur;
+    int largeur;
+    int longueur2;
+    int largeur2;
 };
 
-void demandeur(struct point *p, int size) {
-  do {
-    printf("Quelles sont les coordonnées du point en longueur ? ");
-    scanf("%f", &(p->longueur));
-  } while (p->longueur < 0 || p->longueur >= size ||
-           p->longueur != (int)p->longueur);
+int size;
+struct point p;
+int elements;
+int tab[MAX_SIZE][MAX_SIZE];
+int tab1[MAX_SIZE][MAX_SIZE];
+int r, v;
 
-  do {
-    printf("Quelles sont les coordonnées du point en largeur ? ");
-    scanf("%f", &(p->largeur));
-  } while (p->largeur < 0 || p->largeur >= size ||
-           p->largeur != (int)p->largeur);
+int verificateurcontinu() {
+    int valeur = 0; 
 
-  do {
-    printf("Quelles sont les coordonnées du point 2 en longueur ? ");
-    scanf("%f", &(p->longueur2));
-  } while (p->longueur2 < 0 || p->longueur2 >= size ||
-           p->longueur2 != (int)p->longueur2);
-
-  do {
-    printf("Quelles sont les coordonnées du point 2 en largeur ? ");
-    scanf("%f", &(p->largeur2));
-  } while (p->largeur2 < 0 || p->largeur2 >= size ||
-           p->largeur2 != (int)p->largeur2);
-}
-
-void inverse(int *tab[][], int taille, struct point *p) {
-  int r = 0;
-  int h = 0;
-  int *tab1 = (int *)malloc(taille * sizeof(int));
-
-  do {
-    for (int i = 0; i < taille; i++) {
-      for (int j = 0; j < taille; j++) {
-        tab1[i][j] = tab[i][j];
-      }
-    }
-
-    demandeur(&p, taille);
-    int temp = tab1[p->longueur][p->largeur];
-    tab1[p->longueur][p->largeur] = tab1[p->longueur2][p->largeur2];
-    tab1[p->longueur2][p->largeur2] = temp;
-
-    r = premier_vérificateur(&tab1, taille);
-    if (r == 1) {
-      for (int i = 0; i < taille; i++) {
-        for (int j = 0; j < taille; j++) {
-          tab[i][j] = tab1[i][j];
+  
+   //ligne 
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size-2; j++) {
+            if (tab[i][j] == tab[i][j+1] && tab[i][j] == tab[i][j+2]) {
+                valeur = 2;
+              r=i;
+              v=j;
+                }
         }
-      }
-      h = 1;
     }
-  } while (r == 0);
-}
-
-void create_tableau(int *tab[][], int taille, int number) {
-  srand(time(NULL));
-  for (int i = 0; i < taille; i++) {
-    for (int j = 0; j < taille; j++) {
-      tab[i][j] = rand() % number;
-    }
-  }
-}
-
-int main() {
-  struct point p;
-
-  float a, b;
-  int r;
-  printf("quel est la taille");
-  do {
-    scanf("%f", &a);
-    if (a < 0) {
-      printf("donnez une valeur qui marche");
-    }
-  } while (a < 0);
-  printf("Combien d'élément différent voulez-vous?");
-  scanf("%f", &b);
-  if (b < 4 || b > 6) {
-    do {
-      printf("donnez une valeur qui marche");
-      scanf("%f", &b);
-    } while (b < 4 || b > 6);
-  }
-  int size, number;
-  size = a;
-  number = b;
-
-  int *tab = (int *)malloc(size * sizeof(int));
-  do {
-    create_tableau(&tab, size, number);
-    r = premier_vérificateur(tab, size);
-  } while (r == 1);
-
-  inverse(&tab, size, p);
-
-  for (int i = 0; i < size; i++) {
+       //colonne
     for (int j = 0; j < size; j++) {
-      printf("%d ", tab[i][j]);
+        for (int i = 0; i < size-2; i++) {
+            if (tab[i][j] == tab[i+1][j] && tab[i][j] == tab[i+2][j]) {
+                valeur = 1;
+              r=i;
+              v=j;
+                }
+        }
+    }
+        return valeur;
+}
+
+void createTab()
+{
+    // VALUE TAB
+    float a, b;
+    char input[100];
+
+    printf("Quelle est la taille ? ");
+    do
+    {
+        fgets(input, sizeof(input), stdin);
+        if (sscanf(input, "%f", &a) != 1 || a < MIN_SIZE)
+        {
+            printf("Donnez une valeur qui marche supérieure à %d : ", MIN_SIZE);
+        }
+    } while (a < MIN_SIZE || a > MAX_SIZE);
+
+    printf("Combien d'éléments différents voulez-vous ? ");
+    do
+    {
+        fgets(input, sizeof(input), stdin);
+        if (sscanf(input, "%f", &b) != 1 || b < MIN_ELEMENTS || b > MAX_ELEMENTS)
+        {
+            printf("Donnez une valeur qui marche entre %d et %d : ", MIN_ELEMENTS, MAX_ELEMENTS);
+        }
+    } while (b < MIN_ELEMENTS || b > MAX_ELEMENTS);
+    size = (int)a;
+    elements = (int)b;
+    printf("Size : %d\n", size);
+    printf("Element : %d\n", elements);
+    printf("\n");
+}
+
+void fillTab()
+{
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            tab[i][j] = rand() % elements;
+        }
+    }
+}
+
+void printTab()
+{
+    srand(time(NULL));
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            switch (tab[i][j])
+            {
+            case 0:
+                printf(RED "%d " RESET, tab[i][j]);
+                break;
+            case 1:
+                printf(GREEN "%d " RESET, tab[i][j]);
+                break;
+            case 2:
+                printf(YELLOW "%d " RESET, tab[i][j]);
+                break;
+            case 3:
+                printf(BLUE "%d " RESET, tab[i][j]);
+                break;
+            case 4:
+                printf(MAGENTA "%d " RESET, tab[i][j]);
+                break;
+            case 5:
+                printf(CYAN "%d " RESET, tab[i][j]);
+                break;
+            default:
+                printf("%d ", tab[i][j]);
+            }
+        }
+        printf("\n");
     }
     printf("\n");
-  }
-
-  return 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#define size 10
-
-int premier_vérificateur(int tab[size][size], int taille) {
-  int valeur = 0;
-
-  for (int i = 0; i < taille; i++) {
-    for (int j = 0; j < taille - 2; j++) {
-      if (tab[i][j] == tab[i][j + 1] && tab[i][j] == tab[i][j + 2]) {
-        valeur = 1;
-      }
+bool verifTab(void)
+{
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size - 2; j++)
+        {
+            if (tab[i][j] == tab[i][j + 1] && tab[i][j] == tab[i][j + 2])
+            {
+                return true;
+            }
+        }
     }
-  }
 
-  for (int j = 0; j < taille; j++) {
-    for (int i = 0; i < taille - 2; i++) {
-      if (tab[i][j] == tab[i + 1][j] && tab[i][j] == tab[i + 2][j]) {
-        valeur = 1;
-      }
+    for (int j = 0; j < size; j++)
+    {
+        for (int i = 0; i < size - 2; i++)
+        {
+            if (tab[i][j] == tab[i + 1][j] && tab[i][j] == tab[i + 2][j])
+            {
+                return true;
+            }
+        }
     }
-  }
 
-  return valeur;
+    return false;
 }
 
-struct point {
-  int longueur;
-  int largeur;
-  int longueur2;
-  int largeur2;
-};
+void demandeur()
+{
+    do
+    {
+        printf("Quelles sont les coordonnées du point en longueur ? ");
+        scanf("%d", &(p.longueur));
+    } while (p.longueur < 0 || p.longueur >= size ||
+             p.longueur != (int)p.longueur);
 
-void demandeur(struct point *p, int bonjour) {
-  do {
-    printf("Quelles sont les coordonnées du point en longueur ? ");
-    scanf("%d", &(p->longueur));
-  } while (p->longueur < 0 || p->longueur >= size ||
-           p->longueur != (int)p->longueur);
+    do
+    {
+        printf("Quelles sont les coordonnées du point en largeur ? ");
+        scanf("%d", &(p.largeur));
+    } while (p.largeur < 0 || p.largeur >= size ||
+             p.largeur != (int)p.largeur);
 
-  do {
-    printf("Quelles sont les coordonnées du point en largeur ? ");
-    scanf("%d", &(p->largeur));
-  } while (p->largeur < 0 || p->largeur >= size ||
-           p->largeur != (int)p->largeur);
+    do
+    {
+        printf("Quelles sont les coordonnées du point 2 en longueur ? ");
+        scanf("%d", &(p.longueur2));
+    } while (p.longueur2 < 0 || p.longueur2 >= size ||
+             p.longueur2 != (int)p.longueur2);
 
-  do {
-    printf("Quelles sont les coordonnées du point 2 en longueur ? ");
-    scanf("%d", &(p->longueur2));
-  } while (p->longueur2 < 0 || p->longueur2 >= size ||
-           p->longueur2 != (int)p->longueur2);
-
-  do {
-    printf("Quelles sont les coordonnées du point 2 en largeur ? ");
-    scanf("%d", &(p->largeur2));
-  } while (p->largeur2 < 0 || p->largeur2 >= size ||
-           p->largeur2 != (int)p->largeur2);
+    do
+    {
+        printf("Quelles sont les coordonnées du point 2 en largeur ? ");
+        scanf("%d", &(p.largeur2));
+    } while (p.largeur2 < 0 || p.largeur2 >= size ||
+             p.largeur2 != (int)p.largeur2);
 }
 
-void inverse(int tab[size][size], int taille, struct point *p) {
-  int r = 0;
+void inverse() {
+  bool z = 0;
   int h = 0;
   //int *tab1 = (int *)malloc(taille * sizeof(int));
-int tab1[size][size];
+
 
   do {
-    for (int i = 0; i < taille; i++) {
-      for (int j = 0; j < taille; j++) {
+    for (int i = 0; i < size; i++) {
+      for (int j = 0; j < size; j++) {
         tab1[i][j] = tab[i][j];
       }
     }
 
-    demandeur(p, taille);
-    int temp = tab1[p->longueur][p->largeur];
-    tab1[p->longueur][p->largeur] = tab1[p->longueur2][p->largeur2];
-    tab1[p->longueur2][p->largeur2] = temp;
+    demandeur();
+    int temp = tab[p.longueur][p.largeur];
+    tab[p.longueur][p.largeur] = tab[p.longueur2][p.largeur2];
+    tab[p.longueur2][p.largeur2] = temp;
 
-    r = premier_vérificateur(tab1, taille);
-    if (r == 1) {
-      for (int i = 0; i < taille; i++) {
-        for (int j = 0; j < taille; j++) {
+    
+    z = verifTab();
+    if (z == false) {
+      for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
           tab[i][j] = tab1[i][j];
+          
         }
+       
       }
-      h = 1;
+     printTab(); 
     }
-  } while (r == 0);
+  } while (z == false);
 }
 
-void create_tableau(int tab[size][size], int taille, int number) {
-  srand(time(NULL));
-  for (int i = 0; i < taille; i++) {
-    for (int j = 0; j < taille; j++) {
-      tab[i][j] = rand() % number;
-    }
-  }
+
+
+
+int main(void)
+{
+    bool r = false;
+    do
+    {
+        createTab();
+        fillTab();
+        r = verifTab();
+    } while (r == true);
+    printTab();
+    
+   inverse();
+    printTab();
+  verificateurcontinu();
+
+    return 0;
 }
 
-int main() {
-  struct point p;
-      float a, b;
-    int r;
-    char input[100];
-    
-    printf("Quelle est la taille ? ");
-    do {
-        fgets(input, sizeof(input), stdin);
-        if (sscanf(input, "%f", &a) != 1 || a < 0) {
-            printf("Donnez une valeur qui marche suppérieur à 4 : ");
-        }
-    } while (a < 4);
-    
-    printf("Combien d'éléments différents voulez-vous ? ");
-    do {
-        fgets(input, sizeof(input), stdin);
-        if (sscanf(input, "%f", &b) != 1 || b < 4 || b > 6) {
-            printf("Donnez une valeur qui marche : ");
-        }
-    } while (b < 4 || b > 6);
-    
-    int size, number;
-    size = a;
-    number = b;
-  //int *tab = (int *)malloc(size * sizeof(int));
-int tab[size][size];
-  do {
-    create_tableau(tab, size, number);
-    r = premier_vérificateur(tab, size);
-  } while (r == 1);
-
-  inverse(tab, size, &p);
-
-  for (int i = 0; i < size; i++) {
-    for (int j = 0; j < size; j++) {
-      printf("%d ", tab[i][j]);
-    }
-    printf("\n");
-  }
-
-  return 0;
-}
