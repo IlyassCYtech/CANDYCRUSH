@@ -2,14 +2,20 @@
 #include<stdlib.h>
 #include<time.h>
 
-void graviteColonne(int tab, int *r, int *v, int number){
+void graviteColonne(int tab, int r, int v, int number){
     srand(time(NULL));
+	int count=0;
 	int j=v;
-	int i=r+2;
-	for(i, j; i>2 ; i--){
-		tab[i][j]=tab[i-3][j];
-    }
-    	for(int d=0, j; d<3 ; i++){
+	int i=r;
+	while(tab[i][j]==0){
+		count++;
+		i++;
+	}
+	i=r+(count-1);
+	for(i, j; i>(count-1) ; i--){
+		tab[i][j]=tab[i-count][j];
+    	}
+    	for(int d=0, j; d<=count ; i++){
         	tab[d][j]=rand()% number;
     	}
 }
