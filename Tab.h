@@ -19,14 +19,21 @@
 //bool canSwap(int x1, int y1, int x2, int y2);
 //void play();
 //void removeAlignedElements();
+int navigate_2d_array();
+void navigate_2d_array1();
+int verificateurevolu();
 void demandeur();
 void createTab();
 int verificateurcontinu();
 void inverse();
 void fillTab();
+void fillTab1();
+int verificateurcontinuligne();
+int verificateurcontinucolonne();
 void printTab();
 void supprimeur();
 bool verifTab();
-
+void ClearScreen();
+void gravity();
 
 #endif // TAB_H
