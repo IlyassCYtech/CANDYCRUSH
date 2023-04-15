@@ -4,17 +4,18 @@
 #include <stdbool.h>
 #include "Tab.h"
 
+
 int main(void)
 {
-    bool r = false;
+    int r = 0;
     createTab();
-    do
-    {
-
-        fillTab();
-        r = verifTab();
-
-    } while (r == true);
+     fillTab();
+do
+{
+    r = verificateurcontinu();
+    supprimeur();
+    fillTab1();
+    } while (r == 1 || r==2);
     
    // bool playAgain = true;
     //while (playAgain)
@@ -26,23 +27,38 @@ int main(void)
 int type, score;
 score=0;
 
-    printTab();
+    printTab(score);
     do{
-    inverse();
+    inverse(score);
+    printf("Score: %d\n\n", score);
     type = verificateurcontinu();
     if(type==1 || type ==2){
         score++;
-        printf("score: %d\n", score);
+        printf("Score: %d\n", score);
     }
     supprimeur();
-    printTab();
+    gravity();
+    fillTab1();
+    do
+{
+    r = verificateurcontinu();
+    if(r==1 || r==2){
+        score++;
+        printf("Score: %d\n", score);
+    }
+    supprimeur();
+    fillTab1();
+    } while (r == 1 || r==2);
+    
+printf("Score: %d\n", score);
+if(score>100){
+return 0;
 
-    }while(score<10);
+}
+ } while(score<100);
+
      
-     inverse();
-     type = verificateurcontinu();
-   supprimeur();
-    printTab();
+   
     return 0;
 }
 
