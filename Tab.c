@@ -6,6 +6,14 @@
 
 #include "Tab.h"
 
+
+
+
+
+
+
+int ou = 0;
+int bou = 0;
 int size;
 int elements;
 int tab[MAX_SIZE][MAX_SIZE];
@@ -20,6 +28,244 @@ struct point
 struct point p;
 
 int r, v;
+
+
+int navigate_2d_array(int score) {
+    char input; 
+    int y=1;
+    do{
+         srand(time(NULL));
+    ClearScreen();
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            if(i==ou && j==bou){
+                printf("%d ", tab[i][j]);
+
+            }
+            else{
+            switch (tab[i][j])
+            {
+            case 6:
+                printf(RED "%d " RESET, tab[i][j]);
+                break;
+            case 1:
+                printf(GREEN "%d " RESET, tab[i][j]);
+                break;
+            case 2:
+                printf(YELLOW "%d " RESET, tab[i][j]);
+                break;
+            case 3:
+                printf(BLUE "%d " RESET, tab[i][j]);
+                break;
+            case 4:
+                printf(MAGENTA "%d " RESET, tab[i][j]);
+                break;
+            case 5:
+                printf(CYAN "%d " RESET, tab[i][j]);
+                break;
+            default:
+                printf("%d ", tab[i][j]);
+            }
+            }
+        }
+        printf("\n");
+    }
+    printf("\n");
+        
+    printf("Score: %d\n\n", score);
+
+        printf("Press 'z' to move up, 'q' to move left, 's' to move down, 'd' to move right or i to valid  1.0");
+        
+        scanf(" %c", &input);
+        switch (input) {
+            case 'z':
+                if (ou > 0) ou--;
+                break;
+            case 'q':
+                if (bou > 0) bou--;
+                break;
+            case 's':
+                if (ou < size - 1) ou++;
+                break;
+            case 'd':
+                if (bou < size - 1) bou++;
+                break;
+            case 'i':
+                y=0;
+                p.longueur = ou;
+        p.largeur = bou;
+                return 0;
+                break;
+                
+            default:
+                printf("Invalid input.\n");
+        }
+    }while(y=1);
+        p.longueur = ou;
+        p.largeur = bou;
+return 0;
+}
+
+void navigate_2d_array1(int score){ 
+    char input;       
+        scanf(" %c", &input);
+        switch (input) {
+            case 'z':
+                if (ou > 0) ou--;
+                break;
+            case 'q':
+                if (bou > 0) bou--;
+                break;
+            case 's':
+                if (ou < size - 1) ou++;
+                break;
+            case 'd':
+                if (bou < size - 1) bou++;
+                break;
+            case 'i':
+                
+                break;
+            default:
+                printf("Invalid input.\n");
+        }
+        p.longueur2 = ou;
+        p.largeur2 = bou;
+
+        printf("Score: %d\n\n", score);
+
+
+      
+    
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            if(i==ou && j==bou){
+                printf("%d ", tab[i][j]);
+
+            }
+            else{
+            switch (tab[i][j])
+            {
+            case 6:
+                printf(RED "%d " RESET, tab[i][j]);
+                break;
+            case 1:
+                printf(GREEN "%d " RESET, tab[i][j]);
+                break;
+            case 2:
+                printf(YELLOW "%d " RESET, tab[i][j]);
+                break;
+            case 3:
+                printf(BLUE "%d " RESET, tab[i][j]);
+                break;
+            case 4:
+                printf(MAGENTA "%d " RESET, tab[i][j]);
+                break;
+            case 5:
+                printf(CYAN "%d " RESET, tab[i][j]);
+                break;
+            default:
+                printf("%d ", tab[i][j]);
+            }
+            }
+        }
+        printf("\n");
+    }
+    printf("\n");
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+int verificateurevolu() {
+    int valeur = 0; 
+
+  
+   //ligne 
+     for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size-2; j++) {
+            if (tab[i][j] == tab[i][j+1] && tab[i][j] == tab[i][j+2] && tab[i][j] == tab[i][j+3]&& tab[i][j] == tab[i][j+4]) {
+                valeur = 5;
+                return valeur;
+             }
+        }
+    }
+
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size-2; j++) {
+            if (tab[i][j] == tab[i][j+1] && tab[i][j] == tab[i][j+2] && tab[i][j] == tab[i][j+3]) {
+                valeur = 4;
+                return valeur;
+             }
+        }
+    }
+
+
+
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size-2; j++) {
+            if (tab[i][j] == tab[i][j+1] && tab[i][j] == tab[i][j+2]) {
+                valeur = 1;
+              return valeur;
+                }
+        }
+    }
+       //colonne
+    for (int j = 0; j < size; j++) {
+        for (int i = 0; i < size-2; i++) {
+            if (tab[i][j] == tab[i+1][j] && tab[i][j] == tab[i+2][j] && tab[i][j] == tab[i+3][j] && tab[i][j] == tab[i+4][j]) {
+                valeur = 5;
+              return valeur;
+                }
+        }
+    }
+
+    for (int j = 0; j < size; j++) {
+        for (int i = 0; i < size-2; i++) {
+            if (tab[i][j] == tab[i+1][j] && tab[i][j] == tab[i+2][j] && tab[i][j] == tab[i+3][j]) {
+                valeur = 4;
+              return valeur;
+                }
+        }
+    }
+
+    for (int j = 0; j < size; j++) {
+        for (int i = 0; i < size-2; i++) {
+            if (tab[i][j] == tab[i+1][j] && tab[i][j] == tab[i+2][j]) {
+                valeur = 1;
+              return 1;
+                }
+        }
+    }
+        return valeur;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 int verificateurcontinu() {
@@ -95,16 +341,34 @@ void fillTab()
     }
 }
 
-void printTab()
+
+void fillTab1()
 {
     srand(time(NULL));
     for (int i = 0; i < size; i++)
     {
         for (int j = 0; j < size; j++)
         {
+            if(tab[i][j] == 0){
+            tab [i][j] = rand() % elements+1;
+            }
+        }
+    }
+}
+
+
+
+void printTab(int score)
+{
+    srand(time(NULL));
+    ClearScreen();
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
             switch (tab[i][j])
             {
-            case 0:
+            case 6:
                 printf(RED "%d " RESET, tab[i][j]);
                 break;
             case 1:
@@ -129,6 +393,7 @@ void printTab()
         printf("\n");
     }
     printf("\n");
+    
 }
 
 bool verifTab(void)
@@ -160,36 +425,67 @@ bool verifTab(void)
 
 void demandeur()
 {
-    do
-    {
+    float valeur1;
+    char input[100];
+    
         printf("Quelles sont les coordonnées du point en longueur ? ");
-        scanf("%d", &(p.longueur));
-    } while (p.longueur < 0 || p.longueur >= size ||
-             p.longueur != (int)p.longueur);
-
     do
     {
+        fgets(input, sizeof(input), stdin);
+        if (sscanf(input, "%f", &valeur1) != 1 || valeur1 < 0 || valeur1 > size-1)
+        {
+            printf("Donnez une valeur qui marche supérieure à 0 et inférieur à %d : ", size-1);
+        }
+    } while (valeur1 < 0 || valeur1 > (size-1));
+    p.longueur= valeur1;
+        
+
+
+
+        
         printf("Quelles sont les coordonnées du point en largeur ? ");
-        scanf("%d", &(p.largeur));
-    } while (p.largeur < 0 || p.largeur >= size ||
-             p.largeur != (int)p.largeur);
-
     do
     {
+        fgets(input, sizeof(input), stdin);
+        if (sscanf(input, "%f", &valeur1) != 1 || valeur1 < 0 || valeur1 > size-1)
+        {
+            printf("Donnez une valeur qui marche supérieure à 0 et inférieur à %d : ", size-1);
+        }
+    } while (valeur1 < 0 || valeur1 > (size-1));
+    p.largeur = valeur1;
+
+
+
+        
         printf("Quelles sont les coordonnées du point 2 en longueur ? ");
-        scanf("%d", &(p.longueur2));
-    } while (p.longueur2 < 0 || p.longueur2 >= size ||
-             p.longueur2 != (int)p.longueur2);
-
     do
     {
-        printf("Quelles sont les coordonnées du point 2 en largeur ? ");
-        scanf("%d", &(p.largeur2));
-    } while (p.largeur2 < 0 || p.largeur2 >= size ||
-             p.largeur2 != (int)p.largeur2);
-}
+        fgets(input, sizeof(input), stdin);
+        if (sscanf(input, "%f", &valeur1) != 1 || valeur1 < 0 || valeur1 > size-1)
+        {
+            printf("Donnez une valeur qui marche supérieure à 0 et inférieur à %d : ", size-1);
+        }
+    } while (valeur1 < 0 || valeur1 > (size-1));
+    p.longueur2= valeur1; 
 
-void inverse() {
+   
+  
+        printf("Quelles sont les coordonnées du point 2 en largeur ? ");
+    do
+    {
+        fgets(input, sizeof(input), stdin);
+        if (sscanf(input, "%f", &valeur1) != 1 || valeur1 < 0 || valeur1 > size-1)
+        {
+            printf("Donnez une valeur qui marche supérieure à 0 et inférieur à %d : ", size-1);
+        }
+    } while (valeur1 < 0 || valeur1 > (size-1));
+    p.largeur2 = valeur1;
+
+   
+    }
+   
+
+void inverse(int score) {
   bool z = 0;
   int h = 0;
   //int *tab1 = (int *)malloc(taille * sizeof(int));
@@ -202,7 +498,8 @@ void inverse() {
       }
     }
 
-    demandeur();
+    navigate_2d_array(score);
+    navigate_2d_array1(score);
     int temp = tab[p.longueur][p.largeur];
     tab[p.longueur][p.largeur] = tab[p.longueur2][p.largeur2];
     tab[p.longueur2][p.largeur2] = temp;
@@ -217,26 +514,73 @@ void inverse() {
         }
        
       }
-    inverse();
+    inverse(score);
     }
-    printTab(); 
+    ClearScreen();
+    printTab(score); 
   } 
+
+
+int verificateurcontinuligne() {
+    int valeur = 0; 
+
+  
+   //ligne 
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size-2; j++) {
+            if (tab[i][j] == tab[i][j+1] && tab[i][j] == tab[i][j+2]) {
+                valeur = 2;
+              r=i;
+              v=j;
+                }
+        }
+    }
+return valeur;    
+}
+
+int verificateurcontinucolonne() {
+int valeur = 0;
+       //colonne
+    for (int j = 0; j < size; j++) {
+        for (int i = 0; i < size-2; i++) {
+            if (tab[i][j] == tab[i+1][j] && tab[i][j] == tab[i+2][j]) {
+                valeur = 1;
+              r=i;
+              v=j;
+                }
+        }
+    }
+        return valeur;
+}
+
+
+
+
+
+
+
+
 
 void supprimeur(){
 int g = verificateurcontinu();
-if(g==1){
+if(verificateurcontinucolonne () ==1){
 tab[r][v]=0;
 tab[r+1][v]=0;
 tab[r+2][v]=0;
 }
-if(g==2){
+if(verificateurcontinuligne() ==2){
 tab[r][v]=0;
 tab[r][v+1]=0;
 tab[r][v+2]=0;
 }
 
-
 }
+
+
+void ClearScreen()
+ { printf("\033[H\033[J"); }
+
+
 
 /*void removeAlignedElements()
 {
@@ -408,3 +752,56 @@ tab[r][v+2]=0;
 */
 
 
+void gravity() {
+    int i, j;
+    for (j = 0; j < size; j++) {
+        for (i = size - 1; i >= 0; i--) {
+            if (tab[i][j] == 0) {
+                int k;
+                for (k = i - 1; k >= 0; k--) {
+                    if (tab[k][j] != 0) {
+                        tab[i][j] = tab[k][j];
+                        tab[k][j] = 0;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+void gravitycolonne(int grid[size][size]) {
+    int i, j;
+    for (i = 0; i < size; i++) {
+        for (j = 0; j < size; j++) {
+            if (grid[i][j] == 0) {
+                int k;
+                for (k = j + 1; k < size; k++) {
+                    if (grid[i][k] != 0) {
+                        grid[i][j] = grid[i][k];
+                        grid[i][k] = 0;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+
+  
+    for (i = 0; i < size; i++) {
+        for (j = 0; j < size; j++) {
+            if (grid[i][j] == 0) {
+                int k;
+                for (k = j + 1; k < size; k++) {
+                    if (grid[i][k] != 0) {
+                        grid[i][j] = grid[i][k];
+                        grid[i][k] = 0;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+}
