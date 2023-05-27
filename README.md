@@ -12,20 +12,22 @@
 
 1) Enter in the folder with the program in the terminal
 
-1) Write "make" in the terminal to compil the program.
+2) Write "make" in the terminal to compil the program.
 ```sh
 make
 ```
 
-2) To run the program, use the command "./candy".
-
-CLEAN & MRPROPER
+3) To run the program, use the command "./candy".
+```sh
+./candy
+```
+###   CLEAN & MRPROPER
 
 1) To delete all .o files, write this command in the terminal : "make clean"
 
 2) To delete all .o files and the file "candy" write : "make mrproper" in the terminal.
 
-MENU
+###   MENU
 
 ![WhatsApp Image 2023-05-27 à 23 00 43](https://github.com/IlyassCYtech/CANDYCRUSH/assets/130382885/efbcfdb5-add1-46e0-a53d-5314ac837e17)
 
@@ -34,7 +36,7 @@ In the menu you have multiple choices, you can start a new game to create a new 
 You can also load a game saved before. You can also look at the command to know how to play.
 You also have an "about the game" section to see the rules and some informations about the game. You can also Quit the program
 
-COMMANDS
+###   COMMANDS
 ![WhatsApp Image 2023-05-27 à 23 01 00](https://github.com/IlyassCYtech/CANDYCRUSH/assets/130382885/9fed242c-b82a-4dc2-b0c6-8cc1b97688a6)
 
 Use the arrows to navigate in the menu and in your game, use "enter" to select and "m" to go to the menu 
@@ -42,7 +44,7 @@ at any moment.
 To finish you have the "bomb" in the game. To create a bombe you must line up 5 elements of the same colors.
 The bomb permit to remove all the elements of the same colors.
 
-SAVE
+###   SAVE
 
 ![WhatsApp Image 2023-05-27 à 23 07 33](https://github.com/IlyassCYtech/CANDYCRUSH/assets/130382885/5d3b02a8-c182-436d-aa8c-d27fc4ac286b)
 
