@@ -38,6 +38,7 @@ To finish you have the "bomb" in the game. To create a bombe you must line up 5 
 The bomb permit to remove all the elements of the same colors.
 
 SAVE
+
 ![WhatsApp Image 2023-05-27 à 23 07 33](https://github.com/IlyassCYtech/CANDYCRUSH/assets/130382885/5d3b02a8-c182-436d-aa8c-d27fc4ac286b)
 
 You have 2 ways to continue a game : with the default save in the program or with your own backup.
