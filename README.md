@@ -7,7 +7,9 @@
 1) Download all the files and put them in the same folder.
 
 2) Install ncurse if you want to play ton the ncurse version.
-
+```sh
+sudo apt-get install libncurses5-dev libncursesw5-dev
+```
 ###   HOW TO USE
 
 1) Enter in the folder with the program in the terminal
