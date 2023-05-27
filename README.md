@@ -18,4 +18,22 @@ CLEAN & MRPROPER
 
 1) To delete all .o files, write this command in the terminal : "make clean"
 
-2) 
+2) To delete all .o files and the file "candy" write : "make mrproper" in the terminal.
+
+MENU
+
+In the menu you have multiple choices, you can start a new game to create a new grid and a new save.
+You can also load a game saved before. You can also look at the command to know how to play.
+You also have an "about the game" section to see the rules and some informations about the game. You can also Quit the program
+
+COMMANDS
+
+Use the arrows to navigate in the menu and in your game, use "enter" to select and "m" to go to the menu 
+at any moment.
+To finish you have the "bomb" in the game. To create a bombe you must line up 5 elements of the same colors.
+The bomb permit to remove all the elements of the same colors.
+
+SAVE
+
+You have 2 ways to continue a game : with the default save in the program or with your own backup.
+to continue your own backup, you have to put your file ".txt" in the folder.
