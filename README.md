@@ -2,7 +2,7 @@
 
 ![WhatsApp Image 2023-05-27 à 23 04 24](https://github.com/IlyassCYtech/CANDYCRUSH/assets/130382885/2645efa4-e18f-4e1a-b810-80bf01399d99)
 
-PREREQUISITE
+###   PREREQUISITE
 
 1) Download all the files and put them in the same folder.
 
