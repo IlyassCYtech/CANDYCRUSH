@@ -8,11 +8,14 @@
 
 2) Install ncurse if you want to play ton the ncurse version.
 
-HOW TO USE
+###   HOW TO USE
 
 1) Enter in the folder with the program in the terminal
 
 1) Write "make" in the terminal to compil the program.
+```sh
+make
+```
 
 2) To run the program, use the command "./candy".
 
