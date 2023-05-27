@@ -22,6 +22,9 @@ CLEAN & MRPROPER
 
 MENU
 
+![WhatsApp Image 2023-05-27 à 23 00 43](https://github.com/IlyassCYtech/CANDYCRUSH/assets/130382885/efbcfdb5-add1-46e0-a53d-5314ac837e17)
+
+
 In the menu you have multiple choices, you can start a new game to create a new grid and a new save.
 You can also load a game saved before. You can also look at the command to know how to play.
 You also have an "about the game" section to see the rules and some informations about the game. You can also Quit the program
