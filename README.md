@@ -21,11 +21,14 @@ make
 ```sh
 ./candy
 ```
-###   CLEAN & MRPROPER
+###   CLEAN
 
 1) To delete all .o files, write this command in the terminal : "make clean"
+ ```sh
+make clean
+```
 
-2) To delete all .o files and the file "candy" write : "make mrproper" in the terminal.
+
 
 ###   MENU
 
