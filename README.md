@@ -6,7 +6,7 @@
 
 1) Download all the files and put them in the same folder.
 
-2) Install ncurse if you want to play with ncurse.
+2) Install ncurse.
 ```sh
 sudo apt-get install libncurses5-dev libncursesw5-dev
 ```
