@@ -30,6 +30,7 @@ You can also load a game saved before. You can also look at the command to know 
 You also have an "about the game" section to see the rules and some informations about the game. You can also Quit the program
 
 COMMANDS
+![WhatsApp Image 2023-05-27 à 23 01 00](https://github.com/IlyassCYtech/CANDYCRUSH/assets/130382885/9fed242c-b82a-4dc2-b0c6-8cc1b97688a6)
 
 Use the arrows to navigate in the menu and in your game, use "enter" to select and "m" to go to the menu 
 at any moment.
@@ -37,6 +38,7 @@ To finish you have the "bomb" in the game. To create a bombe you must line up 5 
 The bomb permit to remove all the elements of the same colors.
 
 SAVE
+![WhatsApp Image 2023-05-27 à 23 07 33](https://github.com/IlyassCYtech/CANDYCRUSH/assets/130382885/5d3b02a8-c182-436d-aa8c-d27fc4ac286b)
 
 You have 2 ways to continue a game : with the default save in the program or with your own backup.
 to continue with your own backup, you have to put your file ".txt" in the folder.
