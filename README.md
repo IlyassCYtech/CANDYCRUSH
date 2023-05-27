@@ -36,4 +36,4 @@ The bomb permit to remove all the elements of the same colors.
 SAVE
 
 You have 2 ways to continue a game : with the default save in the program or with your own backup.
-to continue your own backup, you have to put your file ".txt" in the folder.
+to continue with your own backup, you have to put your file ".txt" in the folder.
